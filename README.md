@@ -5,7 +5,7 @@
 This repository demonstrates a scalable, end-to-end machine-learning pipeline using **Apache Spark** to build a personalised financial-product recommender system.  
 It combines **collaborative filtering (ALS)** and **natural-language processing (NLP)** to deliver predictive recommendations and sentiment analysis from customer reviews at scale.
 
-The entire pipeline runs in **Google Colab**, making it easy to reproduce and adapt for learning or prototyping.
+The entire pipeline runs in **Google Colab**, making it reproducible and easy to adapt for learning or prototyping.
 
 ## Features
 | Capability | Description |
@@ -14,6 +14,13 @@ The entire pipeline runs in **Google Colab**, making it easy to reproduce and ad
 | **Collaborative Filtering** | ALS-based recommendation engine using user–item ratings. |
 | **Big-Data Readiness** | Built with PySpark pipelines; supports serialisation of trained models for deployment. |
 | **Practical Use Case** | Analyses customer sentiment and provides personalised recommendations for financial products. |
+
+## Technologies Used
+- **PySpark** – Distributed data processing and ML pipelines  
+- **Spark MLlib** – ALS collaborative filtering, ML pipelines  
+- **NLP Techniques** – Tokenisation, stop-word removal, TF-IDF, logistic regression  
+- **Google Colab** – Reproducible cloud environment  
+- **Python 3.11+** – Core programming language  
 
 ## Repository Structure
 ```bash
