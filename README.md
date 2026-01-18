@@ -1,101 +1,84 @@
-
 # Spark-Powered Personalised Finance Recommender with NLP
 
 ## Overview
-This repository demonstrates a scalable, end-to-end machine-learning pipeline using **Apache Spark** to build a personalised financial-product recommender system.  
-It combines **collaborative filtering (ALS)** and **natural-language processing (NLP)** to deliver predictive recommendations and sentiment analysis from customer reviews at scale.
+This repository demonstrates a scalable, end-to-end machine learning pipeline built with **Apache Spark** to deliver personalised financial product recommendations and sentiment insights from customer reviews.
 
-The entire pipeline runs in **Google Colab**, making it reproducible and easy to adapt for learning or prototyping.
+The project combines:
+- **Collaborative filtering (ALS)** for user–item recommendations
+- **Natural language processing (NLP)** for sentiment classification of review text
 
-## Features
+The full pipeline runs in **Google Colab**, making it easy to reproduce, adapt, and extend for learning or prototyping.
+
+## Key Features
+
 | Capability | Description |
-|------------|-------------|
-| **Scalable NLP** | Spark ML pipeline for tokenisation, stop-word removal, TF-IDF and logistic regression classification of review text. |
-| **Collaborative Filtering** | ALS-based recommendation engine using user–item ratings. |
-| **Big-Data Readiness** | Built with PySpark pipelines; supports serialisation of trained models for deployment. |
-| **Practical Use Case** | Analyses customer sentiment and provides personalised recommendations for financial products. |
+|-----------|-------------|
+| Scalable NLP | Spark ML pipeline for tokenisation, stop-word removal, TF-IDF feature extraction, and logistic regression sentiment classification |
+| Collaborative Filtering | ALS-based personalised recommendation engine using explicit user ratings |
+| Big-Data Ready | Built with PySpark pipelines, mirroring patterns used in large-scale production systems |
+| Practical Application | Demonstrates how customer sentiment and ratings can jointly inform financial product recommendations |
 
 ## Technologies Used
 - **PySpark** – Distributed data processing and ML pipelines  
-- **Spark MLlib** – ALS collaborative filtering, ML pipelines  
+- **Spark MLlib** – ALS collaborative filtering and pipeline APIs  
 - **NLP Techniques** – Tokenisation, stop-word removal, TF-IDF, logistic regression  
-- **Google Colab** – Reproducible cloud environment  
-- **Python 3.11+** – Core programming language  
+- **Google Colab** – Reproducible cloud execution environment  
+- **Python 3.11+**
 
 ## Repository Structure
-```bash
-spark-finance-recommender/
-├─ README.md # This file
-├─ FinanceRecommender.ipynb # End-to-end pipeline in Colab
-├─ data/ # Optional sample data
-└─ models/ # Saved NLP and ALS models
+
+```text
+Spark-Powered-Personalised-Finance-Recommender-with-NLP/
+├─ README.md                  # Project documentation
+├─ SparkPowered-PersonalisedFinanceRecommender-withNLP.ipynb   # End-to-end Spark ML pipeline (Colab)
+├─ finance_reviews.txt        # Raw user–item ratings and review text
 ```
-## Quick Start
+## Dataset
+The project uses a lightweight, CSV-style .txt file stored at the repository root:
 
-### 1. Environment Setup in Colab
-```python
-# Install Spark and dependencies
-!apt-get install openjdk-11-jdk-headless -qq > /dev/null
-!wget -q https://archive.apache.org/dist/spark/spark-3.4.3/spark-3.4.3-bin-hadoop3.tgz
-!tar -xzf spark-3.4.3-bin-hadoop3.tgz
-!pip install -q findspark
+```text
+userId, itemId, rating, review_text
 ```
-Configure environment variables and start Spark:
-```bash
-import os, findspark
-os.environ["JAVA_HOME"] = "/usr/lib/jvm/java-11-openjdk-amd64"
-os.environ["SPARK_HOME"] = "/content/spark-3.4.3-bin-hadoop3"
-findspark.init()
+This format reflects how raw review data is often ingested in practice before being scaled to distributed storage (e.g. HDFS or object storage).
 
-from pyspark.sql import SparkSession
-spark = SparkSession.builder.appName("FinanceRecommender").getOrCreate()
-```
-### 2. Create or Load Data
-Use the provided sample dataset of user ratings and review texts, or load your own.
+## Workflow Summary
+The notebook walks through:
+- Loading and parsing raw review data from a .txt file
+- Building an NLP pipeline to classify review sentiment
+- Training an ALS recommender model on user–item ratings
+- Generating and comparing predicted sentiment and recommendation scores
+- Interpreting outputs through tables and visualisations
 
-### 3. Build the NLP Pipeline
-The notebook demonstrates how to:
-- Tokenise review text
-- Remove stop words
-- Compute TF-IDF features
-- Train a logistic regression classifier for sentiment or rating prediction
+## Example Outputs
 
-### 4. Train the ALS Recommender
-Use Spark MLlib’s ALS algorithm to generate personalised product recommendations:
-```bash
-from pyspark.ml.recommendation import ALS
-als = ALS(userCol="userId", itemCol="itemId", ratingCol="rating", coldStartStrategy="drop")
-als_model = als.fit(df)
-```
-### 5. Save and Reload Models
-Demonstrates model serialisation:
-```bash
-als_model.write().overwrite().save("/content/als_model")
-nlp_model.write().overwrite().save("/content/nlp_pipeline_model")
-```
-### 6. Run Predictions
-Examples are included for:
-- ALS model – predicting ratings/recommendation scores for new user–item pairs
-- NLP model – classifying sentiment of new review texts
+### Sentiment Heatmap
+This heatmap visualises predicted sentiment scores across user–item pairs, highlighting patterns in model interpretation of review text.
 
-### 7. Interpret Outputs
-Output	Meaning:
-- ALS prediction	Estimated rating or recommendation score for a user–item pair.
-- NLP prediction	Predicted sentiment/rating class from review text.
+![Sentiment Heatmap](output-heatmap-chart-example.png)
 
-### 8. Extend the Project
-- Integrate Spark NLP for named-entity recognition or transformer embeddings
-- Scale to real datasets (Kaggle, Amazon, Reddit, bank-app reviews)
-- Add dashboards (Streamlit or Flask) backed by Spark for live demos
+### Ratings vs Predicted Sentiment
+This bar plot compares user-provided ratings with NLP-predicted sentiment, illustrating alignment between explicit ratings and textual feedback.
+
+![Ratings vs Predicted Sentiment](output-barplot-chart-example.png)
+
+
+## Scaling Beyond the Demo
+While the included dataset is intentionally small, the pipeline is designed to scale to real-world data sources, such as:
+- Public review datasets (e.g. Amazon or Yelp reviews via Kaggle)
+- Financial news or commentary APIs for sentiment analysis
+- User interaction data from financial or banking applications
+- Synthetic data generation to simulate large-scale user–item interactions
+- Social platforms (e.g. Reddit or finance-focused forums) for opinion mining
 
 ## Educational Goals
-This project is aimed at:
-- Data-science learners exploring PySpark, recommender systems and NLP pipelines
-- Teams wanting a reproducible, low-barrier environment to test scalable ML workflows in financial services
+This project is intended for:
+- Data science learners exploring PySpark, NLP, and recommender systems
+- Practitioners seeking a reproducible example of scalable ML workflows
+- Portfolio demonstration of end-to-end ML thinking in a financial context
 
 ## Disclaimer
 This project is for educational and demonstration purposes only.
-It does not make real financial recommendations and contains no personal data.
+It does not provide real financial advice and contains no personal data.
 
 ## License
 This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
