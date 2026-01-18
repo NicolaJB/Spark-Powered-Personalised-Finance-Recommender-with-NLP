@@ -1,0 +1,50 @@
+1,101,3,Good product, some improvements needed.
+1,102,5,Outstanding product and features.
+1,103,2,Satisfactory but has issues.
+1,104,2,Features are limited and slow.
+1,105,5,Excellent service and very reliable.
+1,106,5,Extremely satisfied, highly recommend.
+1,107,4,Very good service, mostly satisfied.
+1,108,1,Very disappointed with this product.
+2,101,3,Helpful staff and clear information.
+2,102,1,App crashes frequently and confusing.
+2,103,5,Excellent service and very reliable.
+2,104,1,High fees and slow response.
+2,105,1,Difficult to navigate and understand.
+2,106,2,Service is average, nothing special.
+2,107,4,Customer support is responsive.
+2,108,2,Satisfactory but has issues.
+2,109,5,Sophisticated investment tools and very intuitive.
+3,101,5,Top-notch support and performance.
+3,102,4,Fast and easy to use.
+3,103,5,Outstanding product and features.
+3,104,3,Functional app with minor issues.
+3,105,3,Functional app with minor issues.
+3,106,5,Fantastic app experience, very smooth.
+3,107,1,App crashes frequently and confusing.
+3,108,2,Works okay but could be improved.
+3,110,4,Sophisticated service and excellent support.
+4,101,3,Decent service, meets expectations.
+4,102,5,Top-notch support and performance.
+4,103,2,Features are limited and slow.
+4,104,2,Works okay but could be improved.
+4,105,1,Unreliable service and poor support.
+4,106,2,Works okay but could be improved.
+4,107,1,Very disappointed with this product.
+4,108,1,Difficult to navigate and understand.
+5,101,2,Satisfactory but has issues.
+5,102,4,Fast and easy to use.
+5,103,5,Outstanding product and features.
+5,104,5,Top-notch support and performance.
+5,105,4,Fast and easy to use.
+5,106,4,Great rewards and low fees.
+5,107,2,Works okay but could be improved.
+5,108,1,High fees and slow response.
+6,101,3,Functional app with minor issues.
+6,102,4,Great rewards and low fees.
+6,103,1,Unreliable service and poor support.
+6,104,1,High fees and slow response.
+6,105,3,Decent service, meets expectations.
+6,106,2,Service is average, nothing special.
+6,107,2,Features are limited and slow.
+6,108,4,Fast and easy to use.
